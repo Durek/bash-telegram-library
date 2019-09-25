@@ -83,7 +83,7 @@ teleLib_handleResponse() {
 	if [ "$teleLib_successful_result" = "1" ]; then
  		teleLib_handleResponse_result="success"
 	else
-		teleLib_handleResponse_result="failure:" `echo $1 | jq -r '.error_code'` "-" `echo $1 | jq -r '.description'`
+		teleLib_handleResponse_result="failure: `echo $1 | jq -r '.error_code'` - `echo $1 | jq -r '.description'`"
 	fi
 }
 
@@ -91,7 +91,7 @@ teleLib_handleResponse() {
 
 #### API FUNCTIONS ####
 
-# teleLib_getMe()
+# teleLib_getMe
 # teleLib_getMe_result = json response from api
 teleLib_getMe_result=""
 teleLib_getMe() {
@@ -99,7 +99,7 @@ teleLib_getMe() {
 	teleLib_handleResponse "$teleLib_getMe_result"
 }
 
-# teleLib_sendMessage(arg1 arg2); arg1 = chat id, arg2 = text
+# teleLib_sendMessage [chat_id] [text] {parse_mode} {disable_web_page_preview} {disable_notification} {reply_to_message_id} {reply_markup}
 # teleLib_sendMessage_result = json response from api
 teleLib_sendMessage_result=""
 teleLib_sendMessage() {
@@ -123,3 +123,17 @@ teleLib_sendMessage() {
 	teleLib_sendMessage_result=`eval "$teleLib_API/sendMessage -d chat_id=$1 -d text='$2' $teleLib_additionalParams"`
 	teleLib_handleResponse "$teleLib_sendMessage_result"
 }
+
+# teleLib_forwardMessage [chat_id] [from_chat_id] [message_id] {disable_notification}
+# teleLib_forwardMessage_result = json response from api
+teleLib_forwardMessage_result=""
+teleLib_forwardMessage(){
+	teleLib_additionalParams=""
+	if [ ! -z "$4"  ]; then
+		teleLib_additionalParams="$teleLib_additionalParams -d disable_notification='$4'"
+	fi
+
+	teleLib_forwardMessage_result=`eval $teleLib_API/forwardMessage -d chat_id=$1 -d from_chat_id=$2 -d message_id=$3 $teleLib_additionalParams`
+	teleLib_handleResponse "$teleLib_forwardMessage_result"
+}
+

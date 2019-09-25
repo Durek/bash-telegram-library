@@ -90,4 +90,8 @@ Optional parameters are enclosed in {these pointy mofuggas}
 
 #### sendMessage [chat_id] [text] {parse_mode} {disable_web_page_preview} {disable_notification} {reply_to_message_id} {reply_markup}
 ```teleLib_sendMessage 1337 "Its working!"```
+
 ```teleLib_sendMessage 1337 "Its *working*!" "Markdown" false true```
+
+#### forwardMessage [chat_id] [from_chat_id] [message_id] {disable_notification}
+```teleLib_forwardMessage 1337 7331 27```
