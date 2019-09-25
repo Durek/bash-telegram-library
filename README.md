@@ -83,8 +83,11 @@ Uses "successful" to check for success or failure and returns a formatted string
 ### Telegram functions
 These functions are named after [Telegram API methods](https://core.telegram.org/bots/api#available-methods), go there for in-depth descriptions.
 
+Optional parameters are enclosed in {these pointy mofuggas}
+
 #### getMe
 ```teleLib_getMe```
 
-#### sendMessage [chatId] [message]
+#### sendMessage [chat_id] [text] {parse_mode} {disable_web_page_preview} {disable_notification} {reply_to_message_id} {reply_markup}
 ```teleLib_sendMessage 1337 "Its working!"```
+```teleLib_sendMessage 1337 "Its *working*!" "Markdown" false true```

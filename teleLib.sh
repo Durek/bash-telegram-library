@@ -103,63 +103,23 @@ teleLib_getMe() {
 # teleLib_sendMessage_result = json response from api
 teleLib_sendMessage_result=""
 teleLib_sendMessage() {
-	teleLib_sendMessage_result=`eval "$teleLib_API/sendMessage -d chat_id=$1 -d text='$2'"`
+	teleLib_additionalParams=""
+	if [ ! -z "$3"  ]; then
+		teleLib_additionalParams="$teleLib_additionalParams -d parse_mode='$3'"
+	fi
+        if [ ! -z "$4"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d disable_web_page_preview='$4'"
+        fi
+        if [ ! -z "$5"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d disable_notification='$5'"
+        fi
+        if [ ! -z "$6"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d reply_to_message_id='$6'"
+        fi
+        if [ ! -z "$7"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d reply_markup='$7'"
+        fi
+
+	teleLib_sendMessage_result=`eval "$teleLib_API/sendMessage -d chat_id=$1 -d text='$2' $teleLib_additionalParams"`
 	teleLib_handleResponse "$teleLib_sendMessage_result"
 }
-
-
-## NOT IMPLEMENTED YET ##
-
-teleLib_forwardMessage(){}
-teleLib_sendPhoto(){}
-teleLib_sendAudio(){}
-teleLib_sendDocument(){}
-teleLib_sendVideo(){}
-teleLib_sendAnimation(){}
-teleLib_sendVoice(){}
-teleLib_sendVideoNote(){}
-teleLib_sendMediaGroup(){}
-teleLib_sendLocation(){}
-teleLib_editMessageLiveLocation(){}
-teleLib_stopMessageLiveLocation(){}
-teleLib_sendVenue(){}
-teleLib_sendContact(){}
-teleLib_sendPoll(){}
-teleLib_sendChatAction(){}
-teleLib_getUserProfilePhotos(){}
-teleLib_getFile(){}
-teleLib_kickChatMember(){}
-teleLib_unbanChatMember(){}
-teleLib_restrictChatMember(){}
-teleLib_promoteChatMember(){}
-teleLib_setChatPermissions(){}
-teleLib_exportChatInviteLink(){}
-teleLib_setChatPhoto(){}
-teleLib_deleteChatPhoto(){}
-teleLib_setChatTitle(){}
-teleLib_setChatDescription(){}
-teleLib_pinChatMessage(){}
-teleLib_unpinChatMessage(){}
-teleLib_leaveChat(){}
-teleLib_getChat(){}
-teleLib_getChatAdministrators(){}
-teleLib_getChatMembersCount(){}
-teleLib_getChatMember(){}
-teleLib_setChatStickerSet(){}
-teleLib_deleteChatStickerSet(){}
-teleLib_answerCallbackQuery(){}
-
-teleLib_editMessageText(){}
-teleLib_editMessageCaption(){}
-teleLib_editMessageMedia(){}
-teleLib_editMessageReplyMarkup(){}
-teleLib_stopPoll(){}
-teleLib_deleteMessage(){}
-
-teleLib_sendSticker(){}
-teleLib_getStickerSet(){}
-teleLib_uploadStickerFile(){}
-teleLib_createNewStickerSet(){}
-teleLib_addStickerToSet(){}
-teleLib_setStickerPositionInSet(){}
-teleLib_deleteStickerFromSet(){}
