@@ -32,15 +32,15 @@
 
 # Check for dependencies
 
-if [ ! `command -v curl` ] ; then
+if [ ! "$(command -v curl)" ] ; then
         echo "Package curl is missing"
-        _ERROR=1
+        teleLib_Error=1
 fi
-if [ ! `command -v jq` ] ; then
+if [ ! "$(command -v jq)" ] ; then
         echo "Package jq is missing"
-        _ERROR=1
+        teleLib_Error=1
 fi
-if [ "$_ERROR" == "1" ]; then
+if [ "$teleLib_Error" == "1" ]; then
 	exit 1
 fi
 
@@ -68,7 +68,7 @@ teleLib_init() {
 # teleLib_sucessful_result = [0|1];
 teleLib_successful_result=""
 teleLib_successful() {
-	if [ `echo $1 | jq -r '.ok'` == "true" ]; then
+	if [ "$(echo $1 | jq -r '.ok')" == "true" ]; then
 		teleLib_successful_result="1"
 	else
 		teleLib_successful_result="0"
@@ -83,7 +83,7 @@ teleLib_handleResponse() {
 	if [ "$teleLib_successful_result" = "1" ]; then
  		teleLib_handleResponse_result="success"
 	else
-		teleLib_handleResponse_result="failure: `echo $1 | jq -r '.error_code'` - `echo $1 | jq -r '.description'`"
+		teleLib_handleResponse_result="failure: $(echo $1 | jq -r '.error_code') - $(echo $1 | jq -r '.description')"
 	fi
 }
 
@@ -95,7 +95,7 @@ teleLib_handleResponse() {
 # teleLib_getMe_result = json response from api
 teleLib_getMe_result=""
 teleLib_getMe() {
-	teleLib_getMe_result=`eval "$teleLib_API/getMe"`
+	teleLib_getMe_result=$(eval "$teleLib_API/getMe")
 	teleLib_handleResponse "$teleLib_getMe_result"
 }
 
@@ -120,7 +120,7 @@ teleLib_sendMessage() {
                 teleLib_additionalParams="$teleLib_additionalParams -d reply_markup='$7'"
         fi
 
-	teleLib_sendMessage_result=`eval "$teleLib_API/sendMessage -d chat_id=$1 -d text='$2' $teleLib_additionalParams"`
+	teleLib_sendMessage_result=$(eval "$teleLib_API/sendMessage -d chat_id=$1 -d text='$2' $teleLib_additionalParams")
 	teleLib_handleResponse "$teleLib_sendMessage_result"
 }
 
@@ -133,7 +133,7 @@ teleLib_forwardMessage(){
 		teleLib_additionalParams="$teleLib_additionalParams -d disable_notification='$4'"
 	fi
 
-	teleLib_forwardMessage_result=`eval $teleLib_API/forwardMessage -d chat_id=$1 -d from_chat_id=$2 -d message_id=$3 $teleLib_additionalParams`
+	teleLib_forwardMessage_result=$(eval $teleLib_API/forwardMessage -d chat_id=$1 -d from_chat_id=$2 -d message_id=$3 $teleLib_additionalParams)
 	teleLib_handleResponse "$teleLib_forwardMessage_result"
 }
 
@@ -158,5 +158,5 @@ teleLib_sendPhoto() {
                 teleLib_additionalParams="$teleLib_additionalParams -d reply_markup='$7'"
         fi
 
-	teleLib_sendPhoto_result=`eval "$teleLib_API/sendPhoto -d chat_id=$1 -d photo='$2' $teleLib_additionalParams"`
+	teleLib_sendPhoto_result=$(eval "$teleLib_API/sendPhoto -d chat_id=$1 -d photo='$2' $teleLib_additionalParams")
 }
