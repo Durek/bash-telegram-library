@@ -43,13 +43,17 @@ First things first: include teleLib.sh in your script
 
 Initialize teleLib.sh with your Bot API Token
 
-```teleBot_init YourTokenHere```
+```teleLib_init YourTokenHere```
 
 Now you are already able to use any function you can find in the next section.
 
 The following example sends "Its working!" to user id 1337
 
-```teleLib_sendMessage 1337 "Its working!"```
+```
+source lib/teleLib.sh
+teleLib_init YourTokenHere
+teleLib_sendMessage 1337 "Its working!"
+```
 
 
 ## Functions
