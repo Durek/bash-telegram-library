@@ -95,3 +95,7 @@ Optional parameters are enclosed in {these pointy mofuggas}
 
 #### forwardMessage [chat_id] [from_chat_id] [message_id] {disable_notification}
 ```teleLib_forwardMessage 1337 7331 27```
+
+#### sendPhoto [chat_id] [photo] {caption} {parse_mode} {disable_notification} {reply_to_message_id} {reply_markup}
+```teleLib_sendPhoto 1337 "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"```
+

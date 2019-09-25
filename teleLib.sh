@@ -137,3 +137,26 @@ teleLib_forwardMessage(){
 	teleLib_handleResponse "$teleLib_forwardMessage_result"
 }
 
+# teleLib_sendPhoto [chat_id] [photo] {caption} {parse_mode} {disable_notification} {reply_to_message_id} {reply_markup}
+# teleLib_sendPhoto_result = json response from api
+teleLib_sendPhoto_result=""
+teleLib_sendPhoto() {
+	teleLib_additionalParams=""
+        if [ ! -z "$3"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d caption='$3'"
+        fi
+        if [ ! -z "$4"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d parse_mode='$4'"
+        fi
+        if [ ! -z "$5"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d disable_notification='$5'"
+        fi
+        if [ ! -z "$6"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d reply_to_message_id='$6'"
+        fi
+        if [ ! -z "$7"  ]; then
+                teleLib_additionalParams="$teleLib_additionalParams -d reply_markup='$7'"
+        fi
+
+	teleLib_sendPhoto_result=`eval "$teleLib_API/sendPhoto -d chat_id=$1 -d photo='$2' $teleLib_additionalParams"`
+}
