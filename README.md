@@ -67,15 +67,15 @@ After executing a function you can find the results in the following variables
 
 ### teleLib.sh functions
 
-#### init botApiToken
+#### init [botApiToken]
 ```teleLib_init 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11```
 
-#### successful jsonString
+#### successful [jsonString]
 Looks for the index "ok" in the given json and returns 1 for true and 0 for false.
 
 ```teleLib_successful "{"ok":false,"error_code":404,"description":"Not Found"}"``` --> 0
 
-#### handleResponse jsonString
+#### handleResponse [jsonString]
 Uses "successful" to check for success or failure and returns a formatted string. "success" for 1 and "ErrorCode - ErrorMessage" for 0
 
 ```handleResponse {"ok":false,"error_code":404,"description":"Not Found"}``` -> 404 - Not Found
@@ -86,5 +86,5 @@ These functions are named after [Telegram API methods](https://core.telegram.org
 #### getMe
 ```teleLib_getMe```
 
-#### sendMessage chatId message
+#### sendMessage [chatId] [message]
 ```teleLib_sendMessage 1337 "Its working!"```
