@@ -87,6 +87,9 @@ teleLib_handleResponse() {
 	fi
 }
 
+teleLib_notImplemented(){
+	echo "$1 has not been implemented, yet."
+}
 
 
 #### API FUNCTIONS ####
@@ -160,3 +163,151 @@ teleLib_sendPhoto() {
 
 	teleLib_sendPhoto_result=$(eval "$teleLib_API/sendPhoto -d chat_id=$1 -d photo='$2' $teleLib_additionalParams")
 }
+
+teleLib_sendAudio(){
+	teleLib_notImplemented "sendAudio"
+}
+teleLib_sendDocument(){
+	teleLib_notImplemented "sendDocument"
+}
+teleLib_sendVideo(){
+	teleLib_notImplemented "sendVideo"
+}
+teleLib_sendAnimation(){
+	teleLib_notImplemented "sendAnimation"
+}
+teleLib_sendVoice(){
+	teleLib_notImplemented "sendVoice"
+}
+teleLib_sendVideoNote(){
+	teleLib_notImplemented "sendVideoNote"
+}
+teleLib_sendMediaGroup() {
+	teleLib_notImplemented "sendMediaGroup"
+}
+teleLib_sendLocation(){
+	teleLib_notImplemented "sendLocation"
+}
+teleLib_editMessageLiveLocation(){
+	teleLib_notImplemented "editMessageLiveLocation"
+}
+teleLib_stopMessageLiveLocation(){
+	teleLib_notImplemented "stopMessageLiveLocation"
+}
+teleLib_sendVenue(){
+	teleLib_notImplemented "sendVenue"
+}
+teleLib_sendContact(){
+	teleLib_notImplemented "sendContact"
+}
+teleLib_sendPoll(){
+	teleLib_notImplemented "sendPoll"
+}
+teleLib_sendChatAction(){
+	teleLib_notImplemented "sendChatAction"
+}
+teleLib_getUserProfilePhotos(){
+	teleLib_notImplemented "getUserProfilePhotos"
+}
+teleLib_getFile(){
+	teleLib_notImplemented "getFile"
+}
+teleLib_kickChatMember(){
+	teleLib_notImplemented "kickChatMember"
+}
+teleLib_unbanChatMember(){
+	teleLib_notImplemented "unbanChatMember"
+}
+teleLib_restrictChatMember(){
+	teleLib_notImplemented "restrictChatMember"
+}
+teleLib_promoteChatMember(){
+	teleLib_notImplemented "promoteChatMember"
+}
+teleLib_setChatPermissions(){
+	teleLib_notImplemented "setChatPermissions"
+}
+teleLib_exportChatInviteLink(){
+	teleLib_notImplemented "exportChatInviteLink"
+}
+teleLib_setChatPhoto(){
+	teleLib_notImplemented "setChatPhoto"
+}
+teleLib_deleteChatPhoto(){
+	teleLib_notImplemented "deleteChatPhoto"
+}
+teleLib_setChatTitle(){
+	teleLib_notImplemented "setChatTitle"
+}
+teleLib_setChatDescription(){
+	teleLib_notImplemented "setChatDescription"
+}
+teleLib_pinChatMessage(){
+	teleLib_notImplemented "pinChatMessage"
+}
+teleLib_unpinChatMessage(){
+	teleLib_notImplemented "unpinChatMessage"
+}
+teleLib_leaveChat(){
+	teleLib_notImplemented "leaveChat"
+}
+teleLib_getChat(){
+	teleLib_notImplemented "getChat"
+}
+teleLib_getChatAdministrators(){
+	teleLib_notImplemented "getChatAdministrators"
+}
+teleLib_getChatMembersCount(){
+	teleLib_notImplemented "getChatMembersCount"
+}
+teleLib_getChatMember(){
+	teleLib_notImplemented "getChatMember"
+}
+teleLib_setChatStickerSet(){
+	teleLib_notImplemented "setChatStickerSet"
+}
+teleLib_deleteChatStickerSet(){
+	teleLib_notImplemented "deleteChatStickerSet"
+}
+teleLib_answerCallbackQuery(){
+	teleLib_notImplemented "answerCallbackQuery"
+}
+
+teleLib_editMessageText(){
+	teleLib_notImplemented "editMessageText"
+}
+teleLib_editMessageCaption(){
+	teleLib_notImplemented "editMessageCaption"
+}
+teleLib_editMessageMedia(){
+	teleLib_notImplemented "editMessageMedia"
+}
+teleLib_editMessageReplyMarkup(){
+	teleLib_notImplemented "editMessageReplyMarkup"
+}
+teleLib_stopPoll(){
+	teleLib_notImplemented "stopPoll"
+}
+teleLib_deleteMessage(){
+	teleLib_notImplemented "deleteMessage"
+}
+
+teleLib_sendSticker(){
+	teleLib_notImplemented "sendSticker"
+}
+teleLib_getStickerSet(){
+	teleLib_notImplemented "getStickerSet"
+}
+teleLib_uploadStickerFile(){
+	teleLib_notImplemented "uploadStickerFile"
+}
+teleLib_createNewStickerSet(){
+	teleLib_notImplemented "createNewStickerSet"
+}
+teleLib_addStickerToSet(){
+	teleLib_notImplemented "addStickerToSet"
+}
+teleLib_setStickerPositionInSet(){
+	teleLib_notImplemented "setStickerPositionInSet"
+}
+
